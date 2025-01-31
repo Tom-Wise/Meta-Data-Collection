@@ -1,0 +1,5 @@
+Model Name: SHADE, Sim: 602, Switch_State_Indx: 2, Disp: G1: 1, G2: 0, B1m: 1, B2m: 1, B1p: 1.9000000000000001(kW), B2p: 1.5000000000000002(kW), Total Time: 10.560005999985151 
+Model Name: SHADE, Sim: 602, Switch_State_Indx: 2, Disp: G1: 1, G2: 0, B1m: 0, B2m: 1, B1p: 0.0(kW), B2p: 1.9000000000000001(kW), Total Time: 11.550559399998747 
+Model Name: SHADE, Sim: 602, Switch_State_Indx: 3, Disp: G1: 1, G2: 0, B1m: 1, B2m: 1, B1p: 1.9000000000000001(kW), B2p: 0.30000000000000004(kW), Total Time: 17.272466499940492 
+Model Name: SHADE, Sim: 602, Switch_State_Indx: 2, Disp: G1: 1, G2: 1, B1m: 1, B2m: 1, B1p: 1.9000000000000001(kW), B2p: 1.9000000000000001(kW), Total Time: 10.326115499949083 
+Model Name: SHADE, Sim: 602, Switch_State_Indx: 3, Disp: G1: 1, G2: 0, B1m: 1, B2m: 1, B1p: 1.5000000000000002(kW), B2p: 0.5(kW), Total Time: 35.192017500055954 

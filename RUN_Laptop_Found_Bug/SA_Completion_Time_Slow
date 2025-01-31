@@ -1,0 +1,5 @@
+Model Name: SA, Sim: 658, Switch_State_Indx: 1, Disp: G1: 1, G2: 1, B1m: 1, B2m: 1, B1p: 1.6(kW), B2p: 0.4(kW), Total Time: 1.9352518999949098 
+Model Name: SA, Sim: 658, Switch_State_Indx: 2, Disp: G1: 1, G2: 1, B1m: 0, B2m: 1, B1p: 0.0(kW), B2p: 1.8000000000000003(kW), Total Time: 2.1687825000844896 
+Model Name: SA, Sim: 658, Switch_State_Indx: 6, Disp: G1: 1, G2: 1, B1m: 1, B2m: 0, B1p: 1.9000000000000001(kW), B2p: 0.0(kW), Total Time: 2.9455009000375867 
+Model Name: SA, Sim: 658, Switch_State_Indx: 8, Disp: G1: 1, G2: 1, B1m: 1, B2m: 1, B1p: 1.9000000000000001(kW), B2p: 1.5000000000000002(kW), Total Time: 2.0087071999441832 
+Model Name: SA, Sim: 658, Switch_State_Indx: 3, Disp: G1: 1, G2: 0, B1m: 1, B2m: 1, B1p: 1.4000000000000001(kW), B2p: 0.7000000000000001(kW), Total Time: 7.180584599962458 

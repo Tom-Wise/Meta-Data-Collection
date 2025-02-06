@@ -1,0 +1,467 @@
+"""NPES TEM Controller cost function definitions and calculation tools.
+
+How to add a new metric:
+
+0. Add a constant to the Metrics enum and goal name to the goals_to_metrics map.
+1. Add the Posture-specific weights for the metric to the WEIGHTS dict.
+2. Add a handler to the Metric Handler functions with the code to calculate the
+   metric from simulation results.
+   2.1. If you need additional data from the simulation, add to 'results' dict
+        in the forwardsim.py model.
+3. Map the metric to the handler in the METRIC_FUNCTIONS dict.
+
+"""
+
+from tem.testbed import Posture
+from tem.cfg import *
+import json
+from types import SimpleNamespace
+
+Metrics = None
+with open(os.path.join(DATA_DIRECTORY, "cost_metrics.json"), "r") as f:
+    Metrics = json.load(f)#, object_hook=lambda d: SimpleNamespace(**d))
+
+# class Metrics:
+
+#     SOC_USE        = "batt_soc"
+#     FUEL_USE       = "fuel_eff"
+#     GEN1_SOH       = "gen1_ttm"
+#     GEN2_SOH       = "gen2_ttm"
+#     BATT1_SOH      = "batt1_ttm"
+#     BATT2_SOH      = "batt2_ttm"
+#     PROP_SOH       = "prop_ttm"
+#     PROP_UNSERVED  = "prop_support"
+#     PULSE_UNSERVED = "pulse_support"
+#     POWER_QUALITY  = "power_quality"
+#     PRE_COOL       = "pre_cool"
+    
+
+#  These are the goal names from the HMI mapped to cost metrics:
+
+# goals_to_metrics = {
+# "batt_soc"      :  Metrics.SOC_USE        ,
+# "fuel_eff"      :  Metrics.FUEL_USE       ,
+# "gen1_ttm"      :  Metrics.GEN1_SOH       ,
+# "gen2_ttm"      :  Metrics.GEN2_SOH       ,
+# "batt1_soh"     :  Metrics.BATT1_SOH      ,
+# "batt2_soh"     :  Metrics.BATT2_SOH      ,
+# "prop_ttm"      :  Metrics.PROP_SOH       ,
+# "prop_support"  :  Metrics.PROP_UNSERVED  ,
+# "pulse_support" :  Metrics.PULSE_UNSERVED ,
+# "power_quality" :  Metrics.POWER_QUALITY  ,
+# "pre_cool"      :  Metrics.PRE_COOL       ,
+# }
+
+# goals_to_justifications = {
+# "batt_soc"      :  "Battery Energy Reserves",
+# "fuel_eff"      :  "Fuel Efficiency",
+# "gen1_ttm"      :  "Generator Lifetime",
+# "gen2_ttm"      :  "Generator Lifetime",
+# "batt1_soh"     :  "Battery Lifetime",
+# "batt2_soh"     :  "Battery Lifetime",
+# "prop_ttm"      :  "Propulsion Lifetime",
+# "prop_support"  :  "Propulsion Load Support",
+# "pulse_support" :  "Pulse Load Support",
+# "power_quality" :  "Power Quality",
+# "pre_cool"      :  "Cooling Capability",
+# }
+
+# This is the global set of posture-based weights. They are defaulted to 1.0 here.
+# They can be set from a dictionary of the same shape in the modeul function
+# import_weights() below. This function is currently called in TemController.__init__()
+# and set the weights from demo_data.json:
+
+POSTURE_WEIGHTS = {}
+
+
+# ======================== Metric Handler Functions ==========================
+def calc_soc_use(result):
+    
+    cost = ((100.0 - result['batt1_soc_f']) + (100.0 - result['batt2_soc_f'])) / 200.0
+    
+    return cost
+
+def calc_fuel_use(result):
+    
+    cost = (result['fuel_level_i'] - result['fuel_level_f']) / result['fuel_max'] / result['time'][-1] * 3600.0 * 20.0
+    
+    return cost
+
+def calc_gen1_soh(result):
+    
+    cost = (sum(result['gen1_on']) / len(result['gen1_on'])) * 0.5  # stopgap for better cost balancing
+    
+    return cost
+
+def calc_gen2_soh(result):
+    
+    cost = (sum(result['gen2_on']) / len(result['gen2_on'])) * 0.55  # stopgap for better cost balancing
+    
+    return cost
+
+def calc_batt1_soh(results):
+
+    return calc_batt_soh(results, 1)
+
+def calc_batt2_soh(results):
+    
+    return calc_batt_soh(results, 2)
+
+def calc_batt_soh(results, batt_index):
+
+    # Helper function, not used directly as a delegate.
+
+    #TODO remove hard coded values for TOTAL_CYLES and MAX_DSOC
+    #TODO seperate cycle logic by discharging/charging cycles
+
+    RATED_CURRENT = 60 # Nameplate is 150A for discharging but converters limit to 20kw atm
+    CAPACITY = 36*3600 # 36A-Hr * 3600 s/Hr
+    FUDGE_FACTOR = 10.0  # artificial scale factor for cost TODO: do something more better.
+
+    max_dsoc = RATED_CURRENT / CAPACITY
+    if batt_index == 1:
+        begin_rul = results['scenario'].initial_condition.batt1_rul0 #g rab from model
+    else:
+        begin_rul = results['scenario'].initial_condition.batt2_rul0
+
+    #Sum of change of state of charge or C-Rate Charge/Dischargelen
+
+    time = results['time']
+
+    equivalent_cyles = get_batt_cycles_used(results, batt_index)
+
+    max_soh = max_dsoc * (time[-1] - time[0]) / TOTAL_BATT_CYCLES
+
+    soh_usage = equivalent_cyles / TOTAL_BATT_CYCLES
+
+    #Increase cost of cycle usage as the remaining cycles gets lower:
+
+    eol_factor = (TOTAL_BATT_CYCLES - begin_rul)/TOTAL_BATT_CYCLES
+    cost =  (soh_usage / max_soh) * eol_factor * FUDGE_FACTOR
+
+    return cost
+
+def get_batt_cycles_used(results, batt_index):
+
+    time = results['time']
+    d_soc = results[f'batt{batt_index}_dsoc']
+    d_soc_sum = 0.0
+
+    for idx in range(0,len(time)-1):
+        d_soc_sum += (time[idx+1]-time[idx])*abs(d_soc[idx])
+
+    equivalent_cyles = d_soc_sum / 100.0
+
+    return equivalent_cyles
+
+def calc_prop_soh(result):
+    
+    cost = 0.0
+    
+    return cost
+
+def calc_prop_unserved(result):
+    
+    """The time-average per unit propulsion load unserved. 1 = completely unserved
+    and 0 = completely served.
+    """
+    
+    cost = 1.0 - sum(result['load1_fulfilled']) / len(result['load1_fulfilled'])
+
+    return cost
+
+def calc_pulse_unserved(result):
+    
+    # cost = 1.0 - sum(result["load4_fulfilled"]) / len(result["load4_fulfilled"])
+    try:
+        cost = 1.0 - sum(result['load4_fulfilled']) / len(result['load4_fulfilled'])
+        # cost = max(result["thermal"]["pulse_relay_trip"])  ## TODO: demo kludge for positive cost for tripped pulse
+    except:
+        cost = 0.0
+    
+    return cost
+
+def calc_power_quality(result):
+
+    pulse_events = result['scenario'].pulse_events
+    
+    time = result["time"]
+
+    dv_max = 0.0
+    dv = dv_max
+
+    for bus_volts in (result['mb1_voltage'], result['mb2_voltage'],
+                      result['mb3_voltage'], result['mb4_voltage']):
+
+        istart = 0
+        started = False
+        iend = len(time)    
+
+        for event in pulse_events:
+        
+            for i, t in enumerate(time):
+            
+                if t >= event.start and not started:
+                    istart = i
+                    started = True
+                    
+                if t > event.start + event.dur:
+                    iend = i
+                    break
+        
+            event_volts = bus_volts[istart:iend]
+            dv = (max(event_volts) - min(event_volts)) / max(bus_volts)
+            dv_max = max(dv_max, dv)
+
+    dv_sat = min(dv_max, 0.2)
+    
+    cost = dv_sat * 10.0
+
+    return cost
+
+def calc_pre_cool(results):
+    
+    is_pre_cool = results['scenario'].alignment.precool
+    
+    if is_pre_cool:
+        return 0.5  # penalty factor for pre-cooling system
+    else:
+        return 0.0
+
+# This MUST be updated when adding new cost metrics in order to bind the
+# calc_ function to it's metric:
+# METRIC_FUNCTIONS = {
+#     Metrics.SOC_USE        : calc_soc_use        ,
+#     Metrics.FUEL_USE       : calc_fuel_use       ,
+#     Metrics.GEN1_SOH       : calc_gen1_soh       ,
+#     Metrics.GEN2_SOH       : calc_gen2_soh       ,
+#     Metrics.BATT1_SOH      : calc_batt1_soh      ,
+#     Metrics.BATT2_SOH      : calc_batt2_soh      ,
+#     Metrics.PROP_SOH       : calc_prop_soh       ,
+#     Metrics.PROP_UNSERVED  : calc_prop_unserved  ,
+#     Metrics.PULSE_UNSERVED : calc_pulse_unserved ,
+#     Metrics.POWER_QUALITY  : calc_power_quality  ,
+#     Metrics.PRE_COOL       : calc_pre_cool       ,
+# }
+
+#TODO Determine best way to dynamically map user defined functions
+Metrics["SOC_USE"       ]['function']   = calc_soc_use        
+Metrics["FUEL_USE"      ]['function']   = calc_fuel_use       
+Metrics["GEN1_SOH"      ]['function']   = calc_gen1_soh       
+Metrics["GEN2_SOH"      ]['function']   = calc_gen2_soh       
+Metrics["BATT1_SOH"     ]['function']   = calc_batt1_soh      
+Metrics["BATT2_SOH"     ]['function']   = calc_batt2_soh      
+Metrics["PROP_SOH"      ]['function']   = calc_prop_soh       
+Metrics["PROP_UNSERVED" ]['function']   = calc_prop_unserved  
+Metrics["PULSE_UNSERVED"]['function']   = calc_pulse_unserved 
+Metrics["POWER_QUALITY" ]['function']   = calc_power_quality  
+Metrics["PRE_COOL"      ]['function']   = calc_pre_cool       
+
+# ======================== Generic Cost Functions =========================
+
+def calc_sim_cost(result, weights):
+
+    total = 0.0
+
+    metric_costs_unweighted = {}
+    metric_costs_weighted = {}
+
+    for metric, weight in weights.items():
+
+        cost = Metrics[metric]['function'](result)
+        
+        if cost < 0:
+            cost = 10.0  # hack to fix negative costs.
+
+        cost_weighted = cost * weight
+        
+        metric_costs_unweighted[metric] = cost
+        metric_costs_weighted[metric] = cost_weighted
+
+        total += cost_weighted
+        
+    cost_data = {
+        "weights": weights,
+        "metric_costs_unweighted": metric_costs_unweighted,
+        "metric_costs_weighted": metric_costs_weighted,
+        "total" : total,
+        }
+        
+    result["cost"] = cost_data["total"]
+        
+    for metric in cost_data['metric_costs_weighted']:
+        result['cost_metrics'][Metrics[metric]['goal']] = cost_data['metric_costs_weighted'][metric]
+
+    return cost_data
+
+def calc_sims_costs(results, posture=Posture.NONE, weights=None, func=calc_sim_cost):
+
+    """Calculates the costs for a given set of simulation results.
+
+    Arguments:
+
+        results (list)    : A list of results dictionaries from simualtion set.
+
+        posture (Posture) : The selected posture. 
+                            (optional, default = Posture.None)
+
+        weights (dict)    : A dictionary of custom (non-posture-based) weights
+                            (optional, default = None) where the key is the Metric
+                            enum value and the value is the weight. If this is
+                            non None, these value will override the weights of the
+                            selected posture.
+
+        func (function)   : Function for calculating the costs for a simulation. Must
+                            have args: result, weights and return metric_costs_unweighted,
+                            metric_costs_weighted, and total_cost. (optional, default = 
+                            _calc_sim_cost)
+
+    returns:
+
+        costs: A list of cost data of length equal to and with the same index as
+               the input results list with the structure:
+
+               costs = [
+                   {
+                       "index": <i>,
+                       "weights": 
+                       {
+                           <metric j   > : <metric j   weight>,
+                           <metric j+1 > : <metric j+1 weight>,
+                           ...
+                           <metric M   > : <metric M   weight>
+                       }
+                       "metric_costs_unweighted":
+                       {
+                           <metric j   > : <sim i metric j   unweighted cost> ,
+                           <metric j+1 > : <sim i metric j+1 unweighted cost> , 
+                           ...                                  
+                           <metric M   > : <sim i metric M   unweighted cost>   
+                       },
+                       "metric_costs_weighted":
+                       {
+                           <metric j   > : <sim i metric j   weighted cost> ,
+                           <metric j+1 > : <sim i metric j+1 weighted cost> , 
+                           ...                               
+                           <metric M   > : <sim i metric M   weighted cost>   
+                       },                 
+                       "total" : <total cost for sim i>
+                   },
+                   {
+                       "index": <i+1>,
+                       ...
+                   },
+                   ...
+               ]
+    """
+
+    costs = []
+
+    if not weights:
+        test_import_weights()
+        weights = POSTURE_WEIGHTS[posture]
+
+    for result in enumerate(results):
+
+        cost_data = func(result, weights)
+
+        costs.append(cost_data)
+
+    return costs
+
+def import_weights(posture_weights_list, message_func=None, silent_fail=True):
+    
+    global POSTURE_WEIGHTS
+    
+    for posture_weight_data in posture_weights_list:
+         
+        posture = posture_weight_data["posture_id"]
+        POSTURE_WEIGHTS[posture] = {}
+        
+        for weights in posture_weight_data["weights"]:
+
+            try:
+                goal_name = weights["name"]
+                weight = weights["weight"]
+                #metric = goals_to_metrics[goal_name]
+                metric = next(key for key in Metrics if Metrics[key]['goal'] == goal_name)
+                
+                POSTURE_WEIGHTS[posture][metric] = weight
+                
+            except Exception as e:
+                
+                if not silent_fail:
+
+                    msg = f"Error setting weight for posture: {posture} and goal {goal_name}: {e}"
+                
+                    if message_func:
+                        message_func(msg)    
+                    else:
+                        logging.info(msg)
+   
+def justify_metrics(better_cost_data, worse_cost_data, tolerance = 0):
+    """
+    Desc: Compares cost data to identify dominate differential terms and gives justification metrics for one alignment over another
+
+    Arguments:
+    better_cost_data: cost data that has a lower cumulative cost than worse_cost_data
+    worse_cost_data: cost data that has a higher cumulative cost than better_cost_data
+    tolerance: (optional) minimum difference between costs to assign a justifications
+
+    Returns:
+    justifications: list of dictionaries of justifications for each metric
+    """
+    diffs = {}
+    justifications = []
+
+    cost1 = better_cost_data["metric_costs_weighted"]
+    cost2 = worse_cost_data["metric_costs_weighted"]
+
+    for metric in cost1:
+        diffs[metric] = cost1[metric] - cost2[metric]
+    
+    sorted_diffs = {key: value for key, value in sorted(diffs.items(),key=lambda item: item[1])}
+
+    #Justification only gets generated if cost differential is outside of the threshold
+    for key in sorted_diffs:
+        justification = {}
+        value = sorted_diffs[key]
+        justification['metric_key'] = key
+        justification['metric_name'] = Metrics[key]['name']
+        justification['metric_desc'] = Metrics[key]['desc']
+        justification['improved_amount'] = -value
+        if value < -tolerance: #TODO Use tolerance for a minimum improvement
+            # Improvements
+            justification['message'] = "Improved " + Metrics[key]['desc'] + f" by {-value*100:.2f}%"
+            justifications.append(justification)
+
+        elif value > tolerance: #TODO Use tolerance for a minimum improvement
+            # Sacrifices
+            justification['message'] = "Diminished " + Metrics[key]['desc'] + f" by {value*100:.2f}%"
+            justifications.append(justification)
+
+    return justifications
+
+# ================================= TESTS ==================================
+def test_import_weights():
+    
+    import json
+    import os
+    pth = os.path.join(DATA_DIRECTORY,r"demo_data.json")
+    
+    data = None
+
+    with open(os.path.join(DATA_DIRECTORY, "demo_data.json"), "r") as f:
+        data = json.load(f)
+        
+    if not data:
+        return
+    
+    posture_weights_list = data["tem2hmi_init"]["posture_goal_weights"]
+    
+    import_weights(posture_weights_list)
+        
+if __name__ == "__main__":
+    
+    test_import_weights()
+    pass

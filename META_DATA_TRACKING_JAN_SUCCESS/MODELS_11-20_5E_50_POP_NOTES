@@ -1,0 +1,116 @@
+RESULTS FROM MODELS 11-20 - 5E - 50 POP - "ALO", "AO", "ARO", "LARO", "IARO", "AVOA", "BA", "BADPT", "BDEV", "BEESA", 
+
+
+Total Time: 235.20339076800155, Max Epochs: 5, Population Size: 50, Number of models ran: 10, Total Number of Simulations: 3174, Timestamp: 2025-Jan-30-21:22:59.218014 
+------------------------------------------------------
+
+Calculating costs of 3174 forward simulations...
+
+Best scenarios are:
+	1. Alignment 1802 with cost:   0.4161
+	2. Alignment 1758 with cost:   0.4161
+	3. Alignment 1670 with cost:   0.4161
+
+
+Scenario Alignment 3174 cost:   0.7569
+
+New recommendations proposed:
+
+	Recommendation set 1:
+
+		1. Start cooling system.
+		2. Close contactors 104, 108, 109, 110, 204, 210.
+		3. Enable converters 103, 105, 205.
+		4. Close contactors 101, 102, 103, 107, 201, 202, 207.
+		5. Turn on Power Supply 1, Charge Batt 1 at 1.4 kW, Charge Batt 2 at 1.9 kW.
+
+	Recommendation set 2:
+
+		1. Start cooling system.
+		2. Close contactors 104, 108, 109, 110, 204, 210.
+		3. Enable converters 103, 105, 205.
+		4. Close contactors 101, 102, 103, 107, 201, 202, 207.
+		5. Turn on Power Supply 1, Charge Batt 1 at 1.5 kW, Charge Batt 2 at 1.8 kW.
+
+	Recommendation set 3:
+
+		1. Start cooling system.
+		2. Close contactors 104, 108, 109, 110, 204, 210.
+		3. Enable converters 103, 105, 205.
+		4. Close contactors 101, 102, 103, 107, 201, 202, 203, 207.
+		5. Turn on Power Supply 1, Charge Batt 1 at 1.9 kW, Charge Batt 2 at 1.9 kW.
+		
+		
+
+
+2025/01/30 09:19:05 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: Solving single objective optimization problem.
+2025/01/30 09:19:12 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: >>>Problem: P, Epoch: 1, Current best: 0.5937220283055291, Global best: 0.5937220283055291, Runtime: 3.08815 seconds 
+2025/01/30 09:19:16 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: >>>Problem: P, Epoch: 2, Current best: 0.5937220246531681, Global best: 0.5937220246531681, Runtime: 3.58636 seconds 
+2025/01/30 09:19:20 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: >>>Problem: P, Epoch: 3, Current best: 0.5937198529192041, Global best: 0.5937198529192041, Runtime: 4.28356 seconds 
+2025/01/30 09:19:24 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: >>>Problem: P, Epoch: 4, Current best: 0.5937198529192041, Global best: 0.5937198529192041, Runtime: 4.22773 seconds 
+2025/01/30 09:19:28 PM, INFO, mealpy.swarm_based.ALO.OriginalALO: >>>Problem: P, Epoch: 5, Current best: 0.5937198529192041, Global best: 0.5937198529192041, Runtime: 3.99758 seconds 
+2025/01/30 09:19:28 PM, WARNING, mealpy.swarm_based.ALO.OriginalALO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:19:28 PM, INFO, mealpy.swarm_based.AO.OriginalAO: Solving single objective optimization problem.
+2025/01/30 09:19:35 PM, INFO, mealpy.swarm_based.AO.OriginalAO: >>>Problem: P, Epoch: 1, Current best: 0.593193675244256, Global best: 0.593193675244256, Runtime: 3.36513 seconds 
+2025/01/30 09:19:38 PM, INFO, mealpy.swarm_based.AO.OriginalAO: >>>Problem: P, Epoch: 2, Current best: 0.593193675244256, Global best: 0.593193675244256, Runtime: 3.25936 seconds 
+2025/01/30 09:19:42 PM, INFO, mealpy.swarm_based.AO.OriginalAO: >>>Problem: P, Epoch: 3, Current best: 0.593193675244256, Global best: 0.593193675244256, Runtime: 3.52855 seconds 
+2025/01/30 09:19:45 PM, INFO, mealpy.swarm_based.AO.OriginalAO: >>>Problem: P, Epoch: 4, Current best: 0.593193675244256, Global best: 0.593193675244256, Runtime: 2.93071 seconds 
+2025/01/30 09:19:48 PM, INFO, mealpy.swarm_based.AO.OriginalAO: >>>Problem: P, Epoch: 5, Current best: 0.593193675244256, Global best: 0.593193675244256, Runtime: 2.91000 seconds 
+2025/01/30 09:19:48 PM, WARNING, mealpy.swarm_based.AO.OriginalAO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:19:48 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: Solving single objective optimization problem.
+2025/01/30 09:19:54 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: >>>Problem: P, Epoch: 1, Current best: 0.5937254062919886, Global best: 0.5937254062919886, Runtime: 3.02925 seconds 
+2025/01/30 09:19:57 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: >>>Problem: P, Epoch: 2, Current best: 0.5937254062919886, Global best: 0.5937254062919886, Runtime: 3.14054 seconds 
+2025/01/30 09:20:01 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: >>>Problem: P, Epoch: 3, Current best: 0.5937203365120884, Global best: 0.5937203365120884, Runtime: 3.31827 seconds 
+2025/01/30 09:20:04 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: >>>Problem: P, Epoch: 4, Current best: 0.5363416328059298, Global best: 0.5363416328059298, Runtime: 2.95415 seconds 
+2025/01/30 09:20:07 PM, INFO, mealpy.swarm_based.ARO.OriginalARO: >>>Problem: P, Epoch: 5, Current best: 0.5363416328059298, Global best: 0.5363416328059298, Runtime: 3.06193 seconds 
+2025/01/30 09:20:07 PM, WARNING, mealpy.swarm_based.ARO.OriginalARO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:20:07 PM, INFO, mealpy.swarm_based.ARO.LARO: Solving single objective optimization problem.
+2025/01/30 09:20:16 PM, INFO, mealpy.swarm_based.ARO.LARO: >>>Problem: P, Epoch: 1, Current best: 0.4803236746647764, Global best: 0.4803236746647764, Runtime: 5.61232 seconds 
+2025/01/30 09:20:21 PM, INFO, mealpy.swarm_based.ARO.LARO: >>>Problem: P, Epoch: 2, Current best: 0.4161426050966674, Global best: 0.4161426050966674, Runtime: 4.85762 seconds 
+2025/01/30 09:20:24 PM, INFO, mealpy.swarm_based.ARO.LARO: >>>Problem: P, Epoch: 3, Current best: 0.4161364318540046, Global best: 0.4161364318540046, Runtime: 3.22594 seconds 
+2025/01/30 09:20:27 PM, INFO, mealpy.swarm_based.ARO.LARO: >>>Problem: P, Epoch: 4, Current best: 0.4161364318540046, Global best: 0.4161364318540046, Runtime: 3.25204 seconds 
+2025/01/30 09:20:30 PM, INFO, mealpy.swarm_based.ARO.LARO: >>>Problem: P, Epoch: 5, Current best: 0.4161364318540046, Global best: 0.4161364318540046, Runtime: 3.21050 seconds 
+2025/01/30 09:20:30 PM, WARNING, mealpy.swarm_based.ARO.LARO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:20:30 PM, INFO, mealpy.swarm_based.ARO.IARO: Solving single objective optimization problem.
+2025/01/30 09:20:37 PM, INFO, mealpy.swarm_based.ARO.IARO: >>>Problem: P, Epoch: 1, Current best: 0.5937355838359837, Global best: 0.5937355838359837, Runtime: 3.57292 seconds 
+2025/01/30 09:20:41 PM, INFO, mealpy.swarm_based.ARO.IARO: >>>Problem: P, Epoch: 2, Current best: 0.5937355838359837, Global best: 0.5937355838359837, Runtime: 3.19741 seconds 
+2025/01/30 09:20:44 PM, INFO, mealpy.swarm_based.ARO.IARO: >>>Problem: P, Epoch: 3, Current best: 0.5937355838359837, Global best: 0.5937355838359837, Runtime: 3.18226 seconds 
+2025/01/30 09:20:47 PM, INFO, mealpy.swarm_based.ARO.IARO: >>>Problem: P, Epoch: 4, Current best: 0.593730488699209, Global best: 0.593730488699209, Runtime: 3.05681 seconds 
+2025/01/30 09:20:50 PM, INFO, mealpy.swarm_based.ARO.IARO: >>>Problem: P, Epoch: 5, Current best: 0.593730488699209, Global best: 0.593730488699209, Runtime: 3.06701 seconds 
+2025/01/30 09:20:50 PM, WARNING, mealpy.swarm_based.ARO.IARO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:20:50 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: Solving single objective optimization problem.
+2025/01/30 09:20:57 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: >>>Problem: P, Epoch: 1, Current best: 0.41613339913442554, Global best: 0.41613339913442554, Runtime: 3.83688 seconds 
+2025/01/30 09:21:02 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: >>>Problem: P, Epoch: 2, Current best: 0.41613116175409415, Global best: 0.41613116175409415, Runtime: 4.76092 seconds 
+2025/01/30 09:21:07 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: >>>Problem: P, Epoch: 3, Current best: 0.41613005353024235, Global best: 0.41613005353024235, Runtime: 4.94008 seconds 
+2025/01/30 09:21:12 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: >>>Problem: P, Epoch: 4, Current best: 0.41613005353024235, Global best: 0.41613005353024235, Runtime: 4.87011 seconds 
+2025/01/30 09:21:18 PM, INFO, mealpy.swarm_based.AVOA.OriginalAVOA: >>>Problem: P, Epoch: 5, Current best: 0.41613005353024235, Global best: 0.41613005353024235, Runtime: 5.51111 seconds 
+2025/01/30 09:21:18 PM, WARNING, mealpy.swarm_based.AVOA.OriginalAVOA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:21:18 PM, INFO, mealpy.swarm_based.BA.OriginalBA: Solving single objective optimization problem.
+2025/01/30 09:21:25 PM, INFO, mealpy.swarm_based.BA.OriginalBA: >>>Problem: P, Epoch: 1, Current best: 0.5431849682874011, Global best: 0.5431849682874011, Runtime: 3.62132 seconds 
+2025/01/30 09:21:28 PM, INFO, mealpy.swarm_based.BA.OriginalBA: >>>Problem: P, Epoch: 2, Current best: 0.5431849682874011, Global best: 0.5431849682874011, Runtime: 3.57837 seconds 
+2025/01/30 09:21:32 PM, INFO, mealpy.swarm_based.BA.OriginalBA: >>>Problem: P, Epoch: 3, Current best: 0.5431843317372007, Global best: 0.5431843317372007, Runtime: 3.88096 seconds 
+2025/01/30 09:21:36 PM, INFO, mealpy.swarm_based.BA.OriginalBA: >>>Problem: P, Epoch: 4, Current best: 0.5431843317372007, Global best: 0.5431843317372007, Runtime: 3.91134 seconds 
+2025/01/30 09:21:40 PM, INFO, mealpy.swarm_based.BA.OriginalBA: >>>Problem: P, Epoch: 5, Current best: 0.5431843317372007, Global best: 0.5431843317372007, Runtime: 3.96561 seconds 
+2025/01/30 09:21:40 PM, WARNING, mealpy.swarm_based.BA.OriginalBA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:21:40 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: Solving single objective optimization problem.
+2025/01/30 09:21:48 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: >>>Problem: P, Epoch: 1, Current best: 0.46613917613460754, Global best: 0.46613917613460754, Runtime: 3.80120 seconds 
+2025/01/30 09:21:51 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: >>>Problem: P, Epoch: 2, Current best: 0.46613917613460754, Global best: 0.46613917613460754, Runtime: 3.43789 seconds 
+2025/01/30 09:21:54 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: >>>Problem: P, Epoch: 3, Current best: 0.46613917613460754, Global best: 0.46613917613460754, Runtime: 3.43356 seconds 
+2025/01/30 09:21:58 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: >>>Problem: P, Epoch: 4, Current best: 0.42360975902357373, Global best: 0.42360975902357373, Runtime: 3.50990 seconds 
+2025/01/30 09:22:02 PM, INFO, mealpy.swarm_based.BA.AdaptiveBA: >>>Problem: P, Epoch: 5, Current best: 0.42360975902357373, Global best: 0.42360975902357373, Runtime: 3.83361 seconds 
+2025/01/30 09:22:02 PM, WARNING, mealpy.swarm_based.BA.AdaptiveBA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:22:02 PM, INFO, mealpy.swarm_based.BA.DevBA: Solving single objective optimization problem.
+2025/01/30 09:22:10 PM, INFO, mealpy.swarm_based.BA.DevBA: >>>Problem: P, Epoch: 1, Current best: 0.5937338880813382, Global best: 0.5937338880813382, Runtime: 4.51208 seconds 
+2025/01/30 09:22:15 PM, INFO, mealpy.swarm_based.BA.DevBA: >>>Problem: P, Epoch: 2, Current best: 0.5937271027465774, Global best: 0.5937271027465774, Runtime: 4.70666 seconds 
+2025/01/30 09:22:19 PM, INFO, mealpy.swarm_based.BA.DevBA: >>>Problem: P, Epoch: 3, Current best: 0.5937186526724719, Global best: 0.5937186526724719, Runtime: 4.66224 seconds 
+2025/01/30 09:22:25 PM, INFO, mealpy.swarm_based.BA.DevBA: >>>Problem: P, Epoch: 4, Current best: 0.5937186526724719, Global best: 0.5937186526724719, Runtime: 5.56353 seconds 
+2025/01/30 09:22:30 PM, INFO, mealpy.swarm_based.BA.DevBA: >>>Problem: P, Epoch: 5, Current best: 0.5937186526724719, Global best: 0.5937186526724719, Runtime: 5.08653 seconds 
+2025/01/30 09:22:30 PM, WARNING, mealpy.swarm_based.BA.DevBA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 09:22:30 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: Solving single objective optimization problem.
+2025/01/30 09:22:38 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: >>>Problem: P, Epoch: 1, Current best: 0.5431837149541732, Global best: 0.5431837149541732, Runtime: 4.89393 seconds 
+2025/01/30 09:22:43 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: >>>Problem: P, Epoch: 2, Current best: 0.543183714881704, Global best: 0.543183714881704, Runtime: 4.95601 seconds 
+2025/01/30 09:22:48 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: >>>Problem: P, Epoch: 3, Current best: 0.543183714466013, Global best: 0.543183714466013, Runtime: 5.13618 seconds 
+2025/01/30 09:22:53 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: >>>Problem: P, Epoch: 4, Current best: 0.41613900566323087, Global best: 0.41613900566323087, Runtime: 5.08982 seconds 
+2025/01/30 09:22:59 PM, INFO, mealpy.swarm_based.BeesA.CleverBookBeesA: >>>Problem: P, Epoch: 5, Current best: 0.41613900566323087, Global best: 0.41613900566323087, Runtime: 5.58845 seconds 
+2025/01/30 09:22:59 PM, WARNING, mealpy.swarm_based.BeesA.CleverBookBeesA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+

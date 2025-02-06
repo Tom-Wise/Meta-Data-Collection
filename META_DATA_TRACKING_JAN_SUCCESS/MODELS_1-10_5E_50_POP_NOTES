@@ -1,0 +1,99 @@
+Results from "PSO", "SHADE", "SA", "HC", "DE", "AOA", "ABC", "ACOR",  "AGTO", "AGTOM"
+
+
+=> DATA FOR "AGTOM" IS ACTUALLY "FFA"
+
+
+Total Time: 1053.1031516939984, Max Epochs: 5, Population Size: 50, Number of models ran: 10, Total Number of Simulations: 15390, Timestamp: 2025-Jan-30-20:09:29.813278 
+------------------------------------------------------
+
+
+
+All Simulations Utilizing Metaheuristics Complete.
+Calculating costs of 15390 forward simulations...
+
+Best scenarios are:
+	1. Alignment 2096 with cost:   0.4161
+	2. Alignment 15126 with cost:   0.4161
+	3. Alignment 945 with cost:   0.4161
+	
+	
+
+
+
+
+
+
+
+
+2025/01/30 07:51:58 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: Solving single objective optimization problem.
+2025/01/30 07:52:04 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: >>>Problem: P, Epoch: 1, Current best: 0.578767254311169, Global best: 0.578767254311169, Runtime: 3.35841 seconds 
+2025/01/30 07:52:08 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: >>>Problem: P, Epoch: 2, Current best: 0.5431714534807423, Global best: 0.5431714534807423, Runtime: 3.29436 seconds 
+2025/01/30 07:52:11 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: >>>Problem: P, Epoch: 3, Current best: 0.5431714534807423, Global best: 0.5431714534807423, Runtime: 3.29394 seconds 
+2025/01/30 07:52:14 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: >>>Problem: P, Epoch: 4, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.21657 seconds 
+2025/01/30 07:52:17 PM, INFO, mealpy.swarm_based.PSO.OriginalPSO: >>>Problem: P, Epoch: 5, Current best: 0.4233796279235041, Global best: 0.4233796279235041, Runtime: 3.22091 seconds 
+2025/01/30 07:52:17 PM, WARNING, mealpy.swarm_based.PSO.OriginalPSO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:52:18 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: Solving single objective optimization problem.
+2025/01/30 07:52:24 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: >>>Problem: P, Epoch: 1, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.14515 seconds 
+2025/01/30 07:52:27 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: >>>Problem: P, Epoch: 2, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.18898 seconds 
+2025/01/30 07:52:31 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: >>>Problem: P, Epoch: 3, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.25792 seconds 
+2025/01/30 07:52:34 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: >>>Problem: P, Epoch: 4, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.29341 seconds 
+2025/01/30 07:52:37 PM, INFO, mealpy.evolutionary_based.SHADE.L_SHADE: >>>Problem: P, Epoch: 5, Current best: 0.5431686944019973, Global best: 0.5431686944019973, Runtime: 3.53106 seconds 
+2025/01/30 07:52:37 PM, WARNING, mealpy.evolutionary_based.SHADE.L_SHADE: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:52:37 PM, INFO, mealpy.physics_based.SA.OriginalSA: Solving single objective optimization problem.
+2025/01/30 07:52:41 PM, INFO, mealpy.physics_based.SA.OriginalSA: >>>Problem: P, Epoch: 1, Current best: 0.41613508981057545, Global best: 0.41613508981057545, Runtime: 0.10837 seconds 
+2025/01/30 07:52:41 PM, INFO, mealpy.physics_based.SA.OriginalSA: >>>Problem: P, Epoch: 2, Current best: 0.41613508981057545, Global best: 0.41613508981057545, Runtime: 0.18316 seconds 
+2025/01/30 07:52:41 PM, INFO, mealpy.physics_based.SA.OriginalSA: >>>Problem: P, Epoch: 3, Current best: 0.41613508981057545, Global best: 0.41613508981057545, Runtime: 0.08008 seconds 
+2025/01/30 07:52:41 PM, INFO, mealpy.physics_based.SA.OriginalSA: >>>Problem: P, Epoch: 4, Current best: 0.41613508981057545, Global best: 0.41613508981057545, Runtime: 0.06380 seconds 
+2025/01/30 07:52:41 PM, INFO, mealpy.physics_based.SA.OriginalSA: >>>Problem: P, Epoch: 5, Current best: 0.41613508981057545, Global best: 0.41613508981057545, Runtime: 0.09993 seconds 
+2025/01/30 07:52:41 PM, WARNING, mealpy.physics_based.SA.OriginalSA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:52:42 PM, INFO, mealpy.math_based.HC.OriginalHC: Solving single objective optimization problem.
+2025/01/30 07:52:49 PM, INFO, mealpy.math_based.HC.OriginalHC: >>>Problem: P, Epoch: 1, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 4.10573 seconds 
+2025/01/30 07:52:54 PM, INFO, mealpy.math_based.HC.OriginalHC: >>>Problem: P, Epoch: 2, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 4.58838 seconds 
+2025/01/30 07:52:58 PM, INFO, mealpy.math_based.HC.OriginalHC: >>>Problem: P, Epoch: 3, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 4.76219 seconds 
+2025/01/30 07:53:03 PM, INFO, mealpy.math_based.HC.OriginalHC: >>>Problem: P, Epoch: 4, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 4.88586 seconds 
+2025/01/30 07:53:08 PM, INFO, mealpy.math_based.HC.OriginalHC: >>>Problem: P, Epoch: 5, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 4.96754 seconds 
+2025/01/30 07:53:08 PM, WARNING, mealpy.math_based.HC.OriginalHC: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:53:08 PM, INFO, mealpy.evolutionary_based.DE.JADE: Solving single objective optimization problem.
+2025/01/30 07:53:15 PM, INFO, mealpy.evolutionary_based.DE.JADE: >>>Problem: P, Epoch: 1, Current best: 0.5367851284914152, Global best: 0.5367851284914152, Runtime: 3.44999 seconds 
+2025/01/30 07:53:18 PM, INFO, mealpy.evolutionary_based.DE.JADE: >>>Problem: P, Epoch: 2, Current best: 0.5367851284914152, Global best: 0.5367851284914152, Runtime: 3.03809 seconds 
+2025/01/30 07:53:21 PM, INFO, mealpy.evolutionary_based.DE.JADE: >>>Problem: P, Epoch: 3, Current best: 0.5367851284914152, Global best: 0.5367851284914152, Runtime: 3.06805 seconds 
+2025/01/30 07:53:25 PM, INFO, mealpy.evolutionary_based.DE.JADE: >>>Problem: P, Epoch: 4, Current best: 0.41613749536845024, Global best: 0.41613749536845024, Runtime: 3.23893 seconds 
+2025/01/30 07:53:28 PM, INFO, mealpy.evolutionary_based.DE.JADE: >>>Problem: P, Epoch: 5, Current best: 0.41613749536845024, Global best: 0.41613749536845024, Runtime: 3.05562 seconds 
+2025/01/30 07:53:28 PM, WARNING, mealpy.evolutionary_based.DE.JADE: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:53:28 PM, INFO, mealpy.math_based.AOA.OriginalAOA: Solving single objective optimization problem.
+2025/01/30 07:53:34 PM, INFO, mealpy.math_based.AOA.OriginalAOA: >>>Problem: P, Epoch: 1, Current best: 0.5934664768812739, Global best: 0.5934664768812739, Runtime: 3.17600 seconds 
+2025/01/30 07:53:38 PM, INFO, mealpy.math_based.AOA.OriginalAOA: >>>Problem: P, Epoch: 2, Current best: 0.5934664768812739, Global best: 0.5934664768812739, Runtime: 3.52723 seconds 
+2025/01/30 07:53:42 PM, INFO, mealpy.math_based.AOA.OriginalAOA: >>>Problem: P, Epoch: 3, Current best: 0.5934664768812739, Global best: 0.5934664768812739, Runtime: 3.81060 seconds 
+2025/01/30 07:53:45 PM, INFO, mealpy.math_based.AOA.OriginalAOA: >>>Problem: P, Epoch: 4, Current best: 0.5934664768812739, Global best: 0.5934664768812739, Runtime: 3.69275 seconds 
+2025/01/30 07:53:49 PM, INFO, mealpy.math_based.AOA.OriginalAOA: >>>Problem: P, Epoch: 5, Current best: 0.5934664768812739, Global best: 0.5934664768812739, Runtime: 3.77083 seconds 
+2025/01/30 07:53:49 PM, WARNING, mealpy.math_based.AOA.OriginalAOA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:53:49 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: Solving single objective optimization problem.
+2025/01/30 07:53:59 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: >>>Problem: P, Epoch: 1, Current best: 0.5006111680526593, Global best: 0.5006111680526593, Runtime: 6.35844 seconds 
+2025/01/30 07:54:05 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: >>>Problem: P, Epoch: 2, Current best: 0.4437397144020369, Global best: 0.4437397144020369, Runtime: 6.57511 seconds 
+2025/01/30 07:54:11 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: >>>Problem: P, Epoch: 3, Current best: 0.4437397144020369, Global best: 0.4437397144020369, Runtime: 6.13178 seconds 
+2025/01/30 07:54:17 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: >>>Problem: P, Epoch: 4, Current best: 0.4437397144020369, Global best: 0.4437397144020369, Runtime: 6.01373 seconds 
+2025/01/30 07:54:23 PM, INFO, mealpy.swarm_based.ABC.OriginalABC: >>>Problem: P, Epoch: 5, Current best: 0.41609650749468163, Global best: 0.41609650749468163, Runtime: 5.88002 seconds 
+2025/01/30 07:54:23 PM, WARNING, mealpy.swarm_based.ABC.OriginalABC: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:54:23 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: Solving single objective optimization problem.
+2025/01/30 07:54:28 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: >>>Problem: P, Epoch: 1, Current best: 0.543172074730014, Global best: 0.543172074730014, Runtime: 1.59435 seconds 
+2025/01/30 07:54:30 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: >>>Problem: P, Epoch: 2, Current best: 0.543172074730014, Global best: 0.543172074730014, Runtime: 1.75402 seconds 
+2025/01/30 07:54:32 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: >>>Problem: P, Epoch: 3, Current best: 0.543172074730014, Global best: 0.543172074730014, Runtime: 1.60456 seconds 
+2025/01/30 07:54:33 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: >>>Problem: P, Epoch: 4, Current best: 0.543172074730014, Global best: 0.543172074730014, Runtime: 1.52679 seconds 
+2025/01/30 07:54:35 PM, INFO, mealpy.swarm_based.ACOR.OriginalACOR: >>>Problem: P, Epoch: 5, Current best: 0.543172074730014, Global best: 0.543172074730014, Runtime: 1.46789 seconds 
+2025/01/30 07:54:35 PM, WARNING, mealpy.swarm_based.ACOR.OriginalACOR: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:54:35 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: Solving single objective optimization problem.
+2025/01/30 07:54:45 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: >>>Problem: P, Epoch: 1, Current best: 0.5645906168236462, Global best: 0.5645906168236462, Runtime: 6.82901 seconds 
+2025/01/30 07:54:51 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: >>>Problem: P, Epoch: 2, Current best: 0.5431714405165126, Global best: 0.5431714405165126, Runtime: 6.06292 seconds 
+2025/01/30 07:54:58 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: >>>Problem: P, Epoch: 3, Current best: 0.5431711329998062, Global best: 0.5431711329998062, Runtime: 6.59484 seconds 
+2025/01/30 07:55:04 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: >>>Problem: P, Epoch: 4, Current best: 0.5431711329998062, Global best: 0.5431711329998062, Runtime: 6.65101 seconds 
+2025/01/30 07:55:11 PM, INFO, mealpy.swarm_based.AGTO.OriginalAGTO: >>>Problem: P, Epoch: 5, Current best: 0.5431711328758961, Global best: 0.5431711328758961, Runtime: 6.79769 seconds 
+2025/01/30 07:55:11 PM, WARNING, mealpy.swarm_based.AGTO.OriginalAGTO: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+2025/01/30 07:55:11 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: Solving single objective optimization problem.
+2025/01/30 07:57:58 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: >>>Problem: P, Epoch: 1, Current best: 0.4161252970881424, Global best: 0.4161252970881424, Runtime: 163.65750 seconds 
+2025/01/30 08:00:50 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: >>>Problem: P, Epoch: 2, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 171.99167 seconds 
+2025/01/30 08:03:43 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: >>>Problem: P, Epoch: 3, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 172.20189 seconds 
+2025/01/30 08:06:37 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: >>>Problem: P, Epoch: 4, Current best: 0.4161238472176815, Global best: 0.4161238472176815, Runtime: 174.09793 seconds 
+2025/01/30 08:09:29 PM, INFO, mealpy.swarm_based.FFA.OriginalFFA: >>>Problem: P, Epoch: 5, Current best: 0.41612328502678086, Global best: 0.41612328502678086, Runtime: 172.61752 seconds 
+2025/01/30 08:09:29 PM, WARNING, mealpy.swarm_based.FFA.OriginalFFA: Stopping criterion with maximum number of epochs/generations/iterations (MG) occurred. End program!
+
